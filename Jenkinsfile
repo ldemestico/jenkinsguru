@@ -15,7 +15,7 @@ pipeline {
 
     stage('holamundo') {
       environment {
-        hola = 'chauc'
+        hola = 'chau'
       }
       steps {
         build 'com.level3.crm.guru.web_TEST'
