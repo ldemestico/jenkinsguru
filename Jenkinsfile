@@ -13,6 +13,15 @@ pipeline {
       }
     }
 
+    stage('holamundo') {
+      environment {
+        hola = 'chauc'
+      }
+      steps {
+        build 'com.level3.crm.guru.web_TEST'
+      }
+    }
+
   }
   environment {
     enviroment = 'dev'
