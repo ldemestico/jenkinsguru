@@ -2,19 +2,8 @@ pipeline {
   agent any
   stages {
     stage('repo') {
-      parallel {
-        stage('repo') {
-          steps {
-            build 'GitHub Sonar Qube'
-          }
-        }
-
-        stage('GitHub+Maven+SonarQube') {
-          steps {
-            build 'com.level3.crm.guru.web'
-          }
-        }
-
+      steps {
+        build 'GitHub Sonar Qube'
       }
     }
 
@@ -24,12 +13,9 @@ pipeline {
       }
     }
 
-    stage('holamundo') {
-      environment {
-        hola = 'chau'
-      }
+    stage('DockerPush') {
       steps {
-        build 'com.level3.crm.guru.web_TEST'
+        sh 'docker push ardl-dockerhub01:5000/level3/crm.guru:2.29.0.0'
       }
     }
 
