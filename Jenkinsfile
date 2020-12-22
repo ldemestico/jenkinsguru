@@ -9,17 +9,8 @@ pipeline {
 
     stage('Build Docker') {
       steps {
-        sh '''cd /home/l3docker.dev/.jenkins/jobs/com.level3.crm.guru.web
-
-
-
-
-
-
-
-
-
-; docker build -t level3/crm.guru:2.29.0.0 .'''
+        sh 'cd /home/l3docker.dev/.jenkins/jobs/com.level3.crm.guru.web'
+        sh 'docker build -t level3/crm.guru:2.29.0.0 .'
       }
     }
 
@@ -32,6 +23,12 @@ pipeline {
     stage('Deploy Kubernetes') {
       steps {
         build 'com.level3.crm.guru.web_dockerregistry'
+      }
+    }
+
+    stage('Check Pods') {
+      steps {
+        build(job: 'com.level3.crm.guru.web_checkpod', wait: true, quietPeriod: 20)
       }
     }
 
