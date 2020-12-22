@@ -1,12 +1,5 @@
 pipeline {
-  agent any
-def remote = [:]
-remote.name = "masterk8"
-remote.host = "10.48.41.11"
-remote.allowAnyHosts = true
-        remote.user = 'root'
-        remote.password = 'level3'
-  
+  agent any  
   stages {
     stage('repo') {
       steps {
