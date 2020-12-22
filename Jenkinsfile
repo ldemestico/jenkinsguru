@@ -35,5 +35,6 @@ pipeline {
   environment {
     ambiente = 'dev'
     tag = '2.29.0.0'
+    ss = 'aa'
   }
 }
