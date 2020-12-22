@@ -5,11 +5,11 @@ pipeline {
       parallel {
         stage('repo') {
           steps {
-            git(url: 'https://github.com/CenturyLink/GURU-com.level3.crm.guru.web.git', branch: 'master', poll: true, changelog: true, credentialsId: 'testluc')
+            build 'GitHub Sonar Qube'
           }
         }
 
-        stage('') {
+        stage('GitHub+Maven+SonarQube') {
           steps {
             build 'com.level3.crm.guru.web'
           }
