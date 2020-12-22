@@ -1,12 +1,7 @@
 pipeline {
   agent any
   
-  stage('SonarQube') {
-    steps {
-      build 'com.level3.crm.guru.web_dockerregistry'
-    }
-  }
-  
+
   stages {
     stage('docker build') {
       steps {
