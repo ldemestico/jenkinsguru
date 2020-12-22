@@ -27,7 +27,7 @@ pipeline {
 
     stage('Check Pods') {
       steps {
-        build(job: 'com.level3.crm.guru.web_checkpod', wait: true, quietPeriod: 20)
+        build(job: 'com.level3.crm.guru.web_checkpod', wait: true, quietPeriod: 19)
       }
     }
 
