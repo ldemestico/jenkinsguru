@@ -1,12 +1,6 @@
 pipeline {
-  agent any  
+  agent any
   stages {
-    stage('repo') {
-      steps {
-        build 'GitHub Sonar Qube'
-      }
-    }
-
     stage('docker build') {
       steps {
         sh 'docker build -t level3/crm.guru:2.29.0.0 .'
@@ -16,6 +10,12 @@ pipeline {
     stage('DockerPush') {
       steps {
         sh 'docker push ardl-dockerhub01:5000/level3/crm.guru:2.29.0.0'
+      }
+    }
+
+    stage('Deploy Kubernetes') {
+      steps {
+        build 'com.level3.crm.guru.web_dockerregistry'
       }
     }
 
