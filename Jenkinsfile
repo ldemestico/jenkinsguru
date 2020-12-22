@@ -9,7 +9,17 @@ pipeline {
 
     stage('Build Docker') {
       steps {
-        sh 'docker build -t level3/crm.guru:2.29.0.0 /home/l3docker.dev/.jenkins/jobs/com.level3.crm.guru.web/'
+        sh '''cd /home/l3docker.dev/.jenkins/jobs/com.level3.crm.guru.web
+
+
+
+
+
+
+
+
+
+; docker build -t level3/crm.guru:2.29.0.0 .'''
       }
     }
 
