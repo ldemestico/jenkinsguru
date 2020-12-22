@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('repo') {
-      steps {
-        git(url: 'https://github.com/CenturyLink/GURU-com.level3.crm.guru.web.git', branch: 'master', poll: true, changelog: true, credentialsId: 'testluc')
+      parallel {
+        stage('repo') {
+          steps {
+            git(url: 'https://github.com/CenturyLink/GURU-com.level3.crm.guru.web.git', branch: 'master', poll: true, changelog: true, credentialsId: 'testluc')
+          }
+        }
+
+        stage('') {
+          steps {
+            build 'com.level3.crm.guru.web'
+          }
+        }
+
       }
     }
 
